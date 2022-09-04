@@ -59,12 +59,27 @@ public class UserRegistration {
         }
     }
 
+    public void validPassword(){
+        Scanner sc = new Scanner(System.in);
+        System.out.println("Enter user password");
+        String password = sc.nextLine();
+
+        boolean validatePassword = Pattern.matches("^[a-z]{8,}$",password);
+        if(validatePassword){
+            System.out.println("password is valid");
+        }
+        else{
+            System.out.println("passward is invalid");
+        }
+    }
+
     public static void main(String[] args) {
         UserRegistration userRegistration = new UserRegistration();
 //        userRegistration.validFirstName();
 //        userRegistration.validLastName();
 //        userRegistration.validEmailId();
-        userRegistration.validPhoneNumber();
+//        userRegistration.validPhoneNumber();
+        userRegistration.validPassword();
     }
 
 }
