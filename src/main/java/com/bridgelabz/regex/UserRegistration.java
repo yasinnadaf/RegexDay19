@@ -65,29 +65,4 @@ public class UserRegistration {
         }
         return isValid;
     }
-
-    public static void main(String[] args) {
-    UserRegistration regex = new UserRegistration();
-         Scanner sc = new Scanner(System.in);
-         System.out.println("Enter first name: ");
-         String firstName = sc.next();
-         regex.validFirstName(firstName);
-
-        System.out.println("\nEnter last name: ");
-        String lastName = sc.next();
-        regex.validLastName(lastName);
-
-        System.out.println("\nEnter email: ");
-        String validEmail = sc.next();
-        regex.validLastName(validEmail);
-
-        System.out.println("\nEnter phone number: ");
-        String number = sc.next();
-        regex.validLastName(number);
-
-        System.out.println("\nEnter password: ");
-        String password = sc.nextLine();
-        regex.validPassword(password);
-    }
-
 }
