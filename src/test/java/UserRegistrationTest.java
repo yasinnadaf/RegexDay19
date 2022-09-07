@@ -2,6 +2,10 @@ import com.bridgelabz.regex.UserRegistration;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.ValueSource;
+
+import javax.management.ConstructorParameters;
 
 public class UserRegistrationTest {
     static UserRegistration userRegistration;
@@ -73,4 +77,19 @@ public class UserRegistrationTest {
         boolean result = userRegistration.validPassword("yasingmailcom");
         Assertions.assertFalse(result);
     }
+
+
+    @ParameterizedTest
+    @ValueSource(strings = {"Abc@yahoo.com","abc@gmail.com.com",})
+    public void givenEmailWhenValidShouldReturnTrue(String email) {
+        Assertions.assertTrue(userRegistration.validEmailId(email));
+    }
+
+   @ParameterizedTest
+    @ValueSource(strings = {"abc","abc@.com.my","abc123@gmail.a","abc123@.com","abc@%*.com",})
+    public void givenEmailWhenInValidShouldReturnFalse(String email) {
+        Assertions.assertFalse(userRegistration.validEmailId(email));
+    }
+
+
 }
