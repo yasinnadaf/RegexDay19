@@ -1,2 +1,5 @@
 .idea
 *.iml
+*.xml
+/workspace.xml
+.xml
