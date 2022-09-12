@@ -18,63 +18,60 @@ public class UserRegistrationTest {
 
     @Test
     public void givenFirstName_WhenValid_ShouldReturnsTrue() throws UserRegistrationException{
-//        UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.validFirstName("Yasin");
+        boolean result = userRegistration.name.validate("Yasin");
         Assertions.assertTrue(result);
     }
 
     @Test
     public void givenFirstNameWhenInValidShouldThrowUserRegistrationException(){
-//        UserRegistration userRegistration = new UserRegistration();
-        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validFirstName("yasin"));
+        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.name.validate("yasin"));
     }
 
     @Test
     public void givenLastNameWhenValidShouldReturnTrue() throws UserRegistrationException {
-//        UserRegistration userRegistration = new UserRegistration();
-        boolean result = userRegistration.validLastName("Nadaf");
+        boolean result = userRegistration.name.validate("Nadaf");
         Assertions.assertTrue(result);
     }
 
     @Test
     public void givenLastNameWhenInValidShouldThrowUSerRegistrationException() throws UserRegistrationException{
-        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validLastName("nadaf"));
+        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.name.validate("nadaf"));
 
     }
 
     @Test
     public void givenEmailWhenValidShouldReturnTrue() throws UserRegistrationException{
-        boolean result = userRegistration.validEmailId("yasin@mail.com");
+        boolean result = userRegistration.validEmailId.validate("yasin@mail.com");
         Assertions.assertTrue(result);
     }
 
     @Test
     public void givenEmailWhenInValidShouldThrowUserRegistration() throws UserRegistrationException{
-        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validEmailId("Yasin.mail.com.com"));
+        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validEmailId.validate("Yasin.mail.com.com"));
 
     }
 
     @Test
     public void givenPhoneNumWhenValidShouldReturnTrue() throws UserRegistrationException{
-        boolean result = userRegistration.validPhoneNumber("91 9922558888");
+        boolean result = userRegistration.validPhoneNumber.validate("91 9922558888");
         Assertions.assertTrue(result);
     }
 
     @Test
     public void givenPhoneNumWhenInValidShouldThrowUserRegistrationException() throws UserRegistrationException{
-        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validPhoneNumber("9234398488"));
+        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validPhoneNumber.validate("9234398488"));
 
     }
 
     @Test
     public void givenPasswordWhenValidShouldReturnTrue() throws UserRegistrationException {
-        boolean result = userRegistration.validPassword("Yasin@gmail7.com");
+        boolean result = userRegistration.validPassword.validate("Yasin@gmail7.com");
         Assertions.assertTrue(result);
     }
 
     @Test
     public void givenPasswordWhenInValidShouldThrowsUserRegistrationException() throws UserRegistrationException{
-        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validPassword("yasingmailcom"));
+        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validPassword.validate("yasingmailcom"));
 
     }
 
@@ -82,13 +79,13 @@ public class UserRegistrationTest {
     @ParameterizedTest
     @ValueSource(strings = {"Abc@yahoo.com","abc@gmail.com.com",})
     public void givenEmailWhenValidShouldReturnTrue(String email) throws UserRegistrationException {
-        Assertions.assertTrue(userRegistration.validEmailId(email));
+        Assertions.assertTrue(userRegistration.validEmailId.validate(email));
     }
 
    @ParameterizedTest
     @ValueSource(strings = {"abc","abc@.com.my","abc123@gmail.a","abc123@.com","abc@%*.com",})
     public void givenEmailWhenInValidShouldThrowUserRegistrationException(String email) {
-        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validEmailId(email));
+        Assertions.assertThrows(UserRegistrationException.class, () -> userRegistration.validEmailId.validate(email));
     }
 
 }
